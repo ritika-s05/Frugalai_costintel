@@ -1,12 +1,20 @@
 from logging.config import fileConfig
 
+import os
+import sys
+from pathlib import Path
+
 from sqlalchemy import engine_from_config
 from sqlalchemy import pool
-
 from alembic import context
-import os
-from pathlib import Path
 from dotenv import load_dotenv
+
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+BACKEND_DIR = BASE_DIR / "backend"
+
+sys.path.insert(0, str(BACKEND_DIR))
+
 
 from app.database.base import Base
 from app.models.llm_req import LLMRequest
