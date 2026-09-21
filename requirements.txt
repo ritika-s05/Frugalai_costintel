@@ -246,7 +246,7 @@ typer-slim==0.20.0
 typing-inspection @ file:///opt/miniconda3/conda-bld/typing-inspection_1760614169744/work
 typing_extensions==4.16.0
 tzdata==2025.3
-unicorn==2.1.4
+uvicorn==<the-version-you-just-installed>
 uri-template==1.3.0
 urllib3==2.7.0
 uvicorn==0.41.0

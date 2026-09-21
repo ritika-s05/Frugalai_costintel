@@ -4,6 +4,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from openai import OpenAIError
 from sqlalchemy.orm import Session
 
+from app.core.exceptions import TokenBudgetExceededError
 from app.database.dependencied import get_db
 from app.schemas.chat import (
     ChatCompletionRequest,
@@ -34,6 +35,13 @@ def create_chat_completion(
             request=request,
             db=db,
         )
+
+    except TokenBudgetExceededError as exc:
+        raise HTTPException(
+            status_code=429,
+            detail=f"Request blocked by TokenGuard: {exc}",
+        ) from exc
+
     except OpenAIError as exc:
         raise HTTPException(
             status_code=502,

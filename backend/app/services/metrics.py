@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-
+from app.core.model_registry import MODEL_REGISTRY
 
 @dataclass
 class CostMetrics:
@@ -12,13 +12,24 @@ def calculate_cost(
     prompt_tokens: int,
     completion_tokens: int,
 ) -> CostMetrics:
-    """
-    Cost calculation will use provider pricing configuration later.
+    model_config = MODEL_REGISTRY.get(model)
 
-    For Phase 2, the gateway records token usage and latency while
-    cost values remain zero until the pricing registry is introduced.
-    """
+    if model_config is None:
+        raise ValueError(
+            f"Pricing information not found for model: {model}"
+        )
+
+    input_cost = (
+        prompt_tokens / 1_000_000
+    ) * model_config.input_cost_per_1m_tokens
+
+    output_cost = (
+        completion_tokens / 1_000_000
+    ) * model_config.output_cost_per_1m_tokens
+
+    total_cost = input_cost + output_cost
+
     return CostMetrics(
-        estimated_cost=0.0,
-        actual_cost=0.0,
+        estimated_cost=total_cost,
+        actual_cost=total_cost,
     )

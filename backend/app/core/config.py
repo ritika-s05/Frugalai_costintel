@@ -10,6 +10,9 @@ ENV_PATH = Path(__file__).resolve().parents[2] / ".env"
 class Settings(BaseSettings):
     database_url: str
     openai_api_key: str
+    gemini_api_key: str
+    groq_api_key: str
+    anthropic_api_key: str
 
     model_config = SettingsConfigDict(
         env_file=ENV_PATH,

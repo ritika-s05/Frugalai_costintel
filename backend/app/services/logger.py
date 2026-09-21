@@ -13,10 +13,17 @@ def save_llm_request(
     result: ProviderResult,
     estimated_cost: float,
     actual_cost: float,
+    requested_model: str | None = None,
+    baseline_cost: float = 0.0,
+    savings: float = 0.0,
+    savings_percentage: float = 0.0,
+    routed: bool = False,
+    cache_hit: bool = False,
 ) -> LLMRequest:
     record = LLMRequest(
         provider=result.provider,
         model_name=result.model,
+        requested_model=requested_model,
         prompt=json.dumps(
             [message.model_dump() for message in request.messages]
         ),
@@ -26,9 +33,12 @@ def save_llm_request(
         total_tokens=result.total_tokens,
         estimated_cost=estimated_cost,
         actual_cost=actual_cost,
+        baseline_cost=baseline_cost,
+        savings=savings,
+        savings_percentage=savings_percentage,
         latency_ms=result.latency_ms,
-        cache_hit=False,
-        routed=False,
+        cache_hit=cache_hit,
+        routed=routed,
     )
 
     try:
