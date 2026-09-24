@@ -1,6 +1,7 @@
 from fastapi import FastAPI
-
+from app.api.analytics import router as analytics_router
 from app.api.chat import router as chat_router
+
 
 app = FastAPI(
     title="Frugal AI Cost Intelligence",
@@ -9,6 +10,7 @@ app = FastAPI(
 )
 
 app.include_router(chat_router)
+app.include_router(analytics_router)
 
 @app.get("/")
 def root():
