@@ -1,4 +1,4 @@
-
+import InfrastructureFlow from "./components/InfrastructureFlow";
 import { useRef } from "react";
 import {
   motion,
@@ -221,12 +221,11 @@ function App() {
           </motion.div>
 
           {/* INFRASTRUCTURE FLOW */}
+          <motion.div {...reveal} className="infrastructure-container">
+            <InfrastructureFlow />
+          </motion.div>
 
-          <motion.div
-            className="architecture"
-            {...reveal}
-            aria-label="Frugal AI infrastructure flow"
-          >
+          <motion.div>
             <div className="architecture-heading">
               <span className="architecture-label">
                 HOW FRUGAL WORKS

@@ -109,3 +109,14 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+
+.infrastructure-container {
+  width: 100%;
+  margin: 0 0 125px;
+}
+
+@media (max-width: 700px) {
+  .infrastructure-container {
+    margin-bottom: 90px;
+  }
+}
