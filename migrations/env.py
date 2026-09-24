@@ -13,11 +13,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 BACKEND_DIR = BASE_DIR / "backend"
 
 sys.path.insert(0, str(BACKEND_DIR))
-
-from backend.app.database.base import Base
-from backend.app.models.llm_req import LLMRequest
-from backend.app.models.cache_entry import SemanticCacheEntry
-
+from app.database.base import Base
+from app.models.llm_req import LLMRequest
+from app.models.cache_entry import SemanticCacheEntry
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
 config = context.config
