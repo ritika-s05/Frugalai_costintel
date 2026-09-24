@@ -1,0 +1,35 @@
+:root {
+  font-family: Inter, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+
+  color: #49382d;
+  background: #f8f6f1;
+
+  --background: #f8f6f1;
+  --surface: #ffffff;
+  --surface-muted: #eae4d8;
+
+  --primary: #49382d;
+  --secondary: #857566;
+  --accent: #79816a;
+
+  --border: #e3dcd0;
+
+  --radius: 16px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: var(--background);
+  color: var(--primary);
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
