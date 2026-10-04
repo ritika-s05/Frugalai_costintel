@@ -1,3 +1,4 @@
+import AIPlayground from "./components/AIPlayground"
 import InfrastructureFlow from "./components/InfrastructureFlow";
 import { useRef } from "react";
 import {
@@ -115,6 +116,8 @@ function App() {
           Explore platform
           <ArrowUpRight size={16} strokeWidth={1.8} />
         </a>
+
+        <a href="#playground">Playground</a>
       </header>
 
       <main>
@@ -368,6 +371,14 @@ function App() {
               );
             })}
           </div>
+        </section>
+
+        {/* AI PLAYGROUND */}
+
+        <section id="playground" className="playground-section">
+          <motion.div {...reveal}>
+            <AIPlayground />
+          </motion.div>
         </section>
 
         {/* LIVE ANALYTICS */}
